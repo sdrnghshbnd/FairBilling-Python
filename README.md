@@ -43,8 +43,8 @@ This Python application provides a summary of each user's total session time to 
 1. Clone the repository:
 
     ```bash
-    git clone https://your-repository-url.git
-    cd your-repository-folder
+    git clone https://github.com/sdrnghshbnd/FairBilling-Python.git
+    cd FairBilling-Python.git
     ```
 
 2. (Optional) Create a virtual environment:
