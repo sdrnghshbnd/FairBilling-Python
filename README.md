@@ -1,8 +1,32 @@
-# Fair Billing
+```
+  ____       _ _   _     _       _______   _                                                _           _   _                 
+ |  _ \     (_| | (_)   | |     |__   __| | |                                              (_)         | | (_)                
+ | |_) |_ __ _| |_ _ ___| |__      | | ___| | ___  ___ ___  _ __ ___  _ __ ___  _   _ _ __  _  ___ __ _| |_ _  ___  _ __  ___ 
+ |  _ <| '__| | __| / __| '_ \     | |/ _ | |/ _ \/ __/ _ \| '_ ` _ \| '_ ` _ \| | | | '_ \| |/ __/ _` | __| |/ _ \| '_ \/ __|
+ | |_) | |  | | |_| \__ | | | |    | |  __| |  __| (_| (_) | | | | | | | | | | | |_| | | | | | (_| (_| | |_| | (_) | | | \__ \
+ |____/|_|  |_|\__|_|___|_| |_|    |_|\___|_|\___|\___\____|_______|_|_| |_| |_|\__,_|_| |_|_|\___\__,_|\__|_|\___/|_| |_|___/ 
+
+
+
+                                                         ____ _______ 
+                                                        |  _ |__   __|
+                                                        | |_) | | |   
+                                                        |  _ <  | |   
+                                                        | |_) | | |   
+                                                        |____/  |_| 
+
+
+```
+
+# Fair Billing Application
 
 ## Overview
+This Python application provides a summary of each user's total session time to have fair billing.
 
-Fair Billing is a Python project that processes log files to calculate session times and counts. The project includes functionality to validate file paths, read log files, and output results.
+## Features
+- Parses log file with user session start and end times
+- Handles incomplete sessions (missing start or end times)
+- Calculates and outputs session count and total session duration for each user
 
 ## Project Structure
 
