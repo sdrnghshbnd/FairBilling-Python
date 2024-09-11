@@ -54,15 +54,9 @@ This Python application provides a summary of each user's total session time to 
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
-3. Install the required dependencies:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
 ## Running the Application
 
 To run the application and process a log file, use the following command:
 
 ```bash
-python fair_billing.py /path/to/your/logfile.txt
+Python fair_billing.py /path/to/your/logfile.txt
