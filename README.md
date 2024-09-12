@@ -60,6 +60,7 @@ To run the application and process a log file, use the following command:
 
 ```bash
 Python fair_billing.py /path/to/your/logfile.txt
+```
 
 ## Fair Billing - Assumptions and Discussion Points
 
