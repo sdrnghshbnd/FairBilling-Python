@@ -50,7 +50,7 @@ This Python application provides a summary of each user's total session time to 
 2. (Optional) Create a virtual environment:
 
     ```bash
-    python -m venv venv
+    Python -m venv venv
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
