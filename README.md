@@ -79,6 +79,10 @@ During the Dojo session, several discussion points were raised to improve the sy
    - In the event of a power failure or process termination, resuming without reprocessing would require storing the state persistently. 
    - This includes tracking the processing status (e.g., line being processed, `RecordProcessingStatus: Started/In Progress/Completed`) and saving it to a permanent store with ACID compliance to ensure transaction commit confirmation.
 
-4. **File Size Consideration**:
-   - In a real system, file sizes could be large (e.g., gigabytes). 
+4. In a real system file size could large gigabytes-> paging, pageSize configuration parameter, load N lines from file at a time.
+
+5. Concurrency, in a real system possible multiple processes/multi-thread processing of other session files, so complete result calculation sum of sub output to a specifc time period.
+
+6. Use a hash/UUID for uniquely identifying a user, could potentially be better since name of user is of arbitary length, as longer hash is optimal length (less than typical user name length).
+UUID 36 char a bit long, use hash which is human readable, easier debugging.
 
