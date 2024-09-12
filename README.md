@@ -68,17 +68,14 @@ Python fair_billing.py /path/to/your/logfile.txt
 
 During the Dojo session, several discussion points were raised to improve the system for a real-world, scalable implementation:
 
-1. **Time Handling**: 
-   - The input file's time is assumed to be in UTC. 
-   - In a real system, UTC plus TimeZone/locale adjustments would be necessary to handle daylight saving time, time changes, and midnight crossover, ensuring accurate billing without overcharging or undercharging.
+1. Assumed input file time is UTC time - in real system UTC plus TimeZone/locale to handle daylight saving/time changes/midnight crossover
+so not charge double or less depending 
 
-2. **File Consistency**:
-   - It is assumed that the file is not replaced or modified mid-processing.
-   
-3. **Process Resumption**:
-   - In the event of a power failure or process termination, resuming without reprocessing would require storing the state persistently. 
-   - This includes tracking the processing status (e.g., line being processed, `RecordProcessingStatus: Started/In Progress/Completed`) and saving it to a permanent store with ACID compliance to ensure transaction commit confirmation.
+2. Assumed file is not replaced mid processing.
 
+3. If the power/ or issue whereby process is killed, to resume without reprocessing, would require state hard stored so we could resume.
+Tracking Processiing e.g. Line we are processing, RecordProcessingStatus: Started/In Progress/Completed, save to a permanent store ACID, transaction commit confirmation.
+ 
 4. In a real system file size could large gigabytes-> paging, pageSize configuration parameter, load N lines from file at a time.
 
 5. Concurrency, in a real system possible multiple processes/multi-thread processing of other session files, so complete result calculation sum of sub output to a specifc time period.
