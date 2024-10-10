@@ -1,3 +1,4 @@
+import os
 import unittest
 from unittest.mock import patch, mock_open
 from pathlib import Path
@@ -13,7 +14,9 @@ class TestLogProcessor(unittest.TestCase):
         self.assertTrue(FileParser.validate_filepath(invalid_path))
 
     def test_does_file_exist(self):
-        existing_file = "/home/sdrnghshbnd/PycharmProjects/FairBilling/sample_logs/log.txt"
+        file_path = os.path.join(os.path.dirname(__file__), '..', 'sample_logs', 'log.txt')
+
+        existing_file = file_path
         non_existing_file = "/nonexistent/path/log.txt"
 
         self.assertTrue(FileParser.does_file_exist(existing_file))
@@ -63,10 +66,10 @@ class TestLogProcessor(unittest.TestCase):
         expected_result = {"ALICE99": (1, 31), "CHARLIE": (1, 4)}
         self.assertEqual(result, expected_result)
 
-
     def test_data_results_calculator_real_file(self):
+        file_path = os.path.join(os.path.dirname(__file__), '..', 'sample_logs', 'log.txt')
         result = FileParser.data_results_calculator(
-            Path("/home/sdrnghshbnd/PycharmProjects/FairBilling/sample_logs/log.txt"))
+            Path(file_path))
         expected_result = {
             "ALICE99": (4, 270),
             "CHARLIE": (7, 104),
