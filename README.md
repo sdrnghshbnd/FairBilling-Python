@@ -62,24 +62,3 @@ To run the application and process a log file, use the following command:
 Python fair_billing.py /path/to/your/logfile.txt
 ```
 
-## Fair Billing - Assumptions and Discussion Points
-
-### Dojo Session (11/09/2024)
-
-During the Dojo session, several discussion points were raised to improve the system for a real-world, scalable implementation:
-
-1. Assumed input file time is UTC time - in real system UTC plus TimeZone/locale to handle daylight saving/time changes/midnight crossover
-so not charge double or less depending 
-
-2. Assumed file is not replaced mid processing.
-
-3. If the power/ or issue whereby process is killed, to resume without reprocessing, would require state hard stored so we could resume.
-Tracking Processiing e.g. Line we are processing, RecordProcessingStatus: Started/In Progress/Completed, save to a permanent store ACID, transaction commit confirmation.
- 
-4. In a real system file size could large gigabytes-> paging, pageSize configuration parameter, load N lines from file at a time.
-
-5. Concurrency, in a real system possible multiple processes/multi-thread processing of other session files, so complete result calculation sum of sub output to a specifc time period.
-
-6. Use a hash/UUID for uniquely identifying a user, could potentially be better since name of user is of arbitary length, as longer hash is optimal length (less than typical user name length).
-UUID 36 char a bit long, use hash which is human readable, easier debugging.
-
