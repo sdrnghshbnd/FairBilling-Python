@@ -1,23 +1,31 @@
-import os
 import unittest
 from unittest.mock import patch, mock_open
 from pathlib import Path
-from processor.file_parser import FileParser
 from datetime import datetime
+
+# If you are still using old FileParser (single class):
+from processor.file_parser import FileParser
+
+# Or for modular version, import classes individually:
+# from processor.path_validator import PathValidator
+# from processor.record_validator import RecordValidator
+# from processor.log_file_reader import LogFileReader
+# from processor.session_calculator import SessionCalculator
+# from processor.results_outputter import ResultsOutputter
 
 
 class TestLogProcessor(unittest.TestCase):
+
     def test_validate_filepath(self):
-        valid_path = "/valid/path/log.txt"
-        invalid_path = "hjcg--asdasd!!SACCSDVAGGF!!---"
+        valid_path = Path("/valid/path/log.txt")
+        invalid_path = Path("hjcg--asdasd!!SACCSDVAGGF!!---")
         self.assertTrue(FileParser.validate_filepath(valid_path))
         self.assertTrue(FileParser.validate_filepath(invalid_path))
 
     def test_does_file_exist(self):
-        file_path = os.path.join(os.path.dirname(__file__), '..', 'sample_logs', 'log.txt')
-
+        file_path = Path(__file__).parent.parent / "sample_logs" / "log.txt"
         existing_file = file_path
-        non_existing_file = "/nonexistent/path/log.txt"
+        non_existing_file = Path("/nonexistent/path/log.txt")
 
         self.assertTrue(FileParser.does_file_exist(existing_file))
         self.assertFalse(FileParser.does_file_exist(non_existing_file))
@@ -67,9 +75,8 @@ class TestLogProcessor(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_data_results_calculator_real_file(self):
-        file_path = os.path.join(os.path.dirname(__file__), '..', 'sample_logs', 'log.txt')
-        result = FileParser.data_results_calculator(
-            Path(file_path))
+        file_path = Path(__file__).parent.parent / "sample_logs" / "log.txt"
+        result = FileParser.data_results_calculator(file_path)
         expected_result = {
             "ALICE99": (4, 270),
             "CHARLIE": (7, 104),
