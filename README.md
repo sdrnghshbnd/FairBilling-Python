@@ -61,4 +61,8 @@ To run the application and process a log file, use the following command:
 ```bash
 Python fair_billing.py /path/to/your/logfile.txt
 ```
+or
 
+```bash
+python3 fair_billing.py /path/to/your/logfile.txt
+```
